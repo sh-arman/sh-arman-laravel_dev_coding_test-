@@ -54,26 +54,27 @@
                         @foreach($product as $product)
                     <tr>
                         <td>1</td>
-                        <td>{{ $product->title }} <br> Created at : 25-Aug-2020</td>
-                        <td>Quality product in low cost</td>
+                        <td>{{ $product->title }} <br> Created at : {{ $product->created_at->diffForHumans() }}</td>
+                        <td>{{ $product->description }}</td>
                         <td>
                             <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
 
                                 <dt class="col-sm-3 pb-0">
-                                    {{ $product->description }}
+                                    {{-- {{ $product->description }} --}}
                                 </dt>
                                 <dd class="col-sm-9">
                                     <dl class="row mb-0">
-                                        <dt class="col-sm-4 pb-0">Price : {{ number_format(200,2) }}</dt>
-                                        <dd class="col-sm-8 pb-0">InStock : {{ number_format(50,2) }}</dd>
+                                        <dt class="col-sm-4 pb-0">Price : {{ $product->price }}</dt>
+                                        <dd class="col-sm-8 pb-0">InStock : {{ $product->stock }}</dd>
                                     </dl>
                                 </dd>
                             </dl>
-                            <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more</button>
+                            {{-- <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more</button> --}}
                         </td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                <a href="{{ route('product.edit', 1) }}" class="btn btn-success">Edit</a>
+                                
+                                <a href="{{ route('product.edit', ['id'=>$product->id]) }}" class="btn btn-success">Edit</a>
                             </div>
                         </td>
                     </tr>

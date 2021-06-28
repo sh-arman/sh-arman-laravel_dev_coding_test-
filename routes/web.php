@@ -24,5 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth')->group(function () {
     Route::resource('product-variant', 'VariantController');
     Route::resource('product', 'ProductController');
+    Route::get('ptoduct/edit/{id}', 'ProductController@edit')->name('product.edit');
     Route::post('ptoduct/store', 'ProductController@store')->name('product.store');
+    Route::post('ptoduct/update/{id}', 'ProductController@update')->name('product.update');
 });

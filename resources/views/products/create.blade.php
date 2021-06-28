@@ -18,7 +18,15 @@
                         </div>
                         <div class="form-group">
                             <label for="">Product SKU</label>
-                            <input type="text" name="sku" placeholder="Product Name" class="form-control">
+                            <input type="text" name="sku" placeholder="Product SKU" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Product Price</label>
+                            <input type="text" name="price" placeholder="Product Price" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Product Stock</label>
+                            <input type="number" name="stock" placeholder="Product Stock" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="">Description</label>

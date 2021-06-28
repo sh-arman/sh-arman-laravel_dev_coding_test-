@@ -18,6 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $product = Product::all();
         return view('products.index')->with('product', $product)
                                     ->with('image', ProductImage::all());
     }
@@ -45,11 +46,15 @@ class ProductController extends Controller
       $this->validate($request,[
         'title'=> 'required|max:200',
         'sku'=> 'required',
+        'price'=> 'required',
+        'stock'=> 'required',
         'description'=> 'required',
       ]);
       $product = Product::create([
         'title'=> $request->title,
         'sku'=> $request->sku, 
+        'price'=> $request->price, 
+        'stock'=> $request->stock, 
         'description'=> $request->description,
       ]);
 
@@ -83,10 +88,11 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $variants = Variant::all();
-        return view('products.edit', compact('variants'));
+       $product = Product::findOrFail($id);
+        return view('products.edit')->with('product', $product)
+                                    ->with('image', ProductImage::all());
     }
 
     /**
@@ -96,9 +102,21 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+    
+     $product = Product::findOrFail($id);
+
+     $product->fill([
+       'title'=> $request->title,
+       'description'=> $request->description,
+       'price'=> $request->price,
+       'sku'=> $request->sku,
+       'stock'=> $request->stock,
+       'description'=> $request->description,
+     ])->save();
+
+    return back();
     }
 
     /**
