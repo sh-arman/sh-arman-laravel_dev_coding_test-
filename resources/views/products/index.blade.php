@@ -51,16 +51,16 @@
                     </thead>
 
                     <tbody>
-
+                        @foreach($product as $product)
                     <tr>
                         <td>1</td>
-                        <td>T-Shirt <br> Created at : 25-Aug-2020</td>
+                        <td>{{ $product->title }} <br> Created at : 25-Aug-2020</td>
                         <td>Quality product in low cost</td>
                         <td>
                             <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
 
                                 <dt class="col-sm-3 pb-0">
-                                    SM/ Red/ V-Nick
+                                    {{ $product->description }}
                                 </dt>
                                 <dd class="col-sm-9">
                                     <dl class="row mb-0">
@@ -77,7 +77,7 @@
                             </div>
                         </td>
                     </tr>
-
+                    @endforeach
                     </tbody>
 
                 </table>

@@ -65,7 +65,7 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ Request::is('blog/*')  || Request::is('blog')? 'active' : '' }}">
+    {{-- <li class="nav-item {{ Request::is('blog/*')  || Request::is('blog')? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blog" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Blog</span>
@@ -82,15 +82,15 @@
                 <a class="collapse-item {{ url()->current() == route('blog.index') ? 'active' : '' }}" href="{{ route('blog.index') }}">All Blog</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

@@ -14,10 +14,12 @@ class CreateProductImagesTable extends Migration
     public function up()
     {
         Schema::create('product_images', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')->constrained();
-            $table->string('file_path');
-            $table->boolean('thumbnail')->nullable();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+            $table->string('image');
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

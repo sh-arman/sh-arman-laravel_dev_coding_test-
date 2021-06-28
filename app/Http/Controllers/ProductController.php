@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantPrice;
 use App\Models\Variant;
@@ -17,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        return view('products.index')->with('product', $product)
+                                    ->with('image', ProductImage::all());
     }
 
     /**
@@ -29,6 +31,7 @@ class ProductController extends Controller
     {
         $variants = Variant::all();
         return view('products.create', compact('variants'));
+                                        
     }
 
     /**
@@ -39,8 +42,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request,[
+        'title'=> 'required|max:200',
+        'sku'=> 'required',
+        'description'=> 'required',
+      ]);
+      $product = Product::create([
+        'title'=> $request->title,
+        'sku'=> $request->sku, 
+        'description'=> $request->description,
+      ]);
 
-    }
+      if($request->image) {
+          $image_new_name = time().'-'.$image->getClientOriginalName();
+          $image->move('upload/product/',$image_new_name);
+          $product_image = new ProductImage;
+          $product_image->product_id = $product->id;
+          $product_image->image = $image_new_name;
+          $product_image->save();
+       }
+    //    dd($product);
+      return back();
+  }
 
 
     /**
