@@ -39,7 +39,7 @@
 
         <div class="card-body">
             <div class="table-response">
-                <table class="table">
+                <table id="table_id" class="table">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -73,7 +73,7 @@
                         </td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                
+
                                 <a href="{{ route('product.edit', ['id'=>$product->id]) }}" class="btn btn-success">Edit</a>
                             </div>
                         </td>

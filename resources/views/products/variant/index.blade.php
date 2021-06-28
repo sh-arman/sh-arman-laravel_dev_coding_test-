@@ -28,14 +28,7 @@
 
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Action</th>
-                    </tr>
-                    </tfoot>
+                  
                     <tbody>
                     @foreach($variants as $key=>$variant)
                         <tr>
@@ -62,4 +55,3 @@
         </div>
     </div>
 @endsection
-
